@@ -4,7 +4,6 @@
 const bodyEl = document.querySelector("body");
 const containerEl = document.createElement("container");
 bodyEl.appendChild(containerEl);
-// apply style for container
 containerEl.style.display = "flex";
 containerEl.style.flexWrap = "wrap";
 containerEl.style.width = "800px";
@@ -27,12 +26,6 @@ function createBlackTile() {
   blackTile.style.backgroundColor = "black";
   return blackTile;
 }
-
-// let blackTileEl = createBlackTile();
-// containerEl.appendChild(blackTileEl);
-
-
-
 
 function createOddRow() {
   for (var i = 1; i < 9; i++) {
@@ -58,10 +51,48 @@ function createEvenRow() {
   }
 }
 
-for (let i = 1; i < 9; i++) {
-  if (i % 2 !== 0) {
-    createOddRow();
-  } else {
-    createEvenRow();
+const createBasicCheckerBoard = function () {
+  for (let i = 1; i < 9; i++) {
+    if (i % 2 !== 0) {
+      createOddRow();
+    } else {
+      createEvenRow();
+    }
   }
+};
+
+// createBasicCheckerBoard();
+
+// ### Random Colors
+
+// On a new branch called `randomcolors`, implement the following changes:
+
+// 1. Instead of being either red or black, each tile should be a random color.  How do you generate random colors?  You can use RGB or Hexadecimal as your color system.
+
+// create random color function- using hex code color
+const getRandomColor = function () {
+  let letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+// Random Colored Tile function - uses hex code
+function createRandTile() {
+  let randomTile = document.createElement("div");
+  randomTile.style.width = "12.5%";
+  randomTile.style.height = "12.5%";
+  randomTile.style.backgroundColor = `${getRandomColor()}`;
+  return randomTile;
 }
+
+const createRandoCheckerboard = function () {
+  for (let i = 1; i < 65; i++) {
+    let randoTile = createRandTile();
+    containerEl.appendChild(randoTile)
+  }
+};
+// createRandoCheckerboard();
+
