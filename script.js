@@ -94,5 +94,5 @@ const createRandoCheckerboard = function () {
     containerEl.appendChild(randoTile)
   }
 };
-// createRandoCheckerboard();
+createRandoCheckerboard();
 
